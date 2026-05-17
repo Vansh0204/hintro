@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useUserStore } from '../store/userStore';
 import { useProfile } from '../hooks/useProfile';
-import { CallSession, Participant } from '../types/api';
+import type { CallSession, Participant } from '../types/api';
 import { useCallStats } from '../hooks/useCallStats';
 import { useCallHistory } from '../hooks/useCallHistory';
 import { StatCard } from '../components/ui/StatCard';
