@@ -17,12 +17,13 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
   // Map path to title
   const getPageTitle = () => {
     switch (pathname) {
-      case '/dashboard':
-        return 'Dashboard';
-      case '/feedback-history':
-        return 'Feedback History';
-      default:
-        return 'Dashboard';
+      case '/dashboard':       return 'Dashboard';
+      case '/call-insights':   return 'Call Insights';
+      case '/knowledge-base':  return 'Knowledge Base';
+      case '/prompts':         return 'Prompts';
+      case '/boxy-controls':   return 'Boxy Controls';
+      case '/feedback-history': return 'Feedback History';
+      default: return 'Dashboard';
     }
   };
 
