@@ -13,6 +13,8 @@ function App() {
         <Route element={<Layout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="feedback-history" element={<FeedbackHistory />} />
+          {/* Catch-all: redirect any unmatched routes to dashboard */}
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>
