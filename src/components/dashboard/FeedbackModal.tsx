@@ -12,7 +12,7 @@ export const FeedbackModal = () => {
   const [comment, setComment] = useState<string>('');
   const [step, setStep] = useState<1 | 2>(1);
 
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<any>(null);
 
   // Clear timeout on unmount or modal close
   useEffect(() => {

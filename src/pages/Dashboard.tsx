@@ -1,7 +1,7 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { useUserStore } from '../store/userStore';
 import { useProfile } from '../hooks/useProfile';
+import { CallSession, Participant } from '../types/api';
 import { useCallStats } from '../hooks/useCallStats';
 import { useCallHistory } from '../hooks/useCallHistory';
 import { StatCard } from '../components/ui/StatCard';
@@ -34,8 +34,8 @@ const Dashboard = () => {
   const callSessions = callHistoryData?.callSessions || [];
 
   // Group calls by date
-  const groupedCalls: { [key: string]: typeof callSessions } = {};
-  callSessions.forEach((session) => {
+  const groupedCalls: { [key: string]: CallSession[] } = {};
+  callSessions.forEach((session: CallSession) => {
     const dateKey = formatCallGroupDate(session.started_at);
     if (!groupedCalls[dateKey]) {
       groupedCalls[dateKey] = [];
@@ -172,7 +172,7 @@ const Dashboard = () => {
                 <div key={dateHeader}>
                   <h3 className="text-sm text-gray-400 font-medium mb-2">{dateHeader}</h3>
                   <div className="divide-y divide-gray-100">
-                    {groupedCalls[dateHeader].map((session) => {
+                    {groupedCalls[dateHeader].map((session: CallSession) => {
                       const clientInitial = session.client ? session.client.charAt(0).toUpperCase() : 'C';
                       return (
                         <div 
@@ -192,7 +192,7 @@ const Dashboard = () => {
                               {/* Participants Row */}
                               <div className="flex items-center gap-1 mt-1">
                                 <div className="flex -space-x-1 overflow-hidden mr-1">
-                                  {session.participants.slice(0, 3).map((p, idx) => (
+                                  {session.participants.slice(0, 3).map((p: Participant, idx: number) => (
                                     <div 
                                       key={idx} 
                                       className="inline-block h-5 w-5 rounded-full ring-2 ring-white bg-gray-100 flex items-center justify-center text-[10px] text-gray-500 font-semibold"
@@ -213,7 +213,7 @@ const Dashboard = () => {
                           <div className="flex items-center gap-4">
                             {/* Feedback trigger button for demo convenience */}
                             <button
-                              onClick={() => openFeedbackModal(session._id)}
+                              onClick={() => openFeedbackModal()}
                               className="text-xs text-primary hover:underline font-medium opacity-0 group-hover:opacity-100 transition-opacity"
                             >
                               Leave Feedback

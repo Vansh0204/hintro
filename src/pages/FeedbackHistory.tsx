@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFeedbackStore } from '../store/feedbackStore';
 import { formatFeedbackDate, formatFeedbackTime } from '../utils/time';
 
